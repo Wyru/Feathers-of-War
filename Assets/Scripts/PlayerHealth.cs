@@ -10,14 +10,14 @@ public class PlayerHealth : MonoBehaviour
     private int currentHealth;
     [SerializeField]
     private Slider healthSlider;
+    [SerializeField]
+    private AudioClip[] damageClips = null;
 
     [SerializeField]
-    AudioSource playerAudio;
     private bool isDead = false;
 
     void Awake()
     {
-        playerAudio = GetComponent<AudioSource>();
         healthSlider = GetComponent<Slider>();
 
         currentHealth = initialHealth;
@@ -29,12 +29,12 @@ public class PlayerHealth : MonoBehaviour
     /// <param name="amount">The amount of damage inflicted to a player.</param>
     public void TakeDamage(int amount)
     {
-
         currentHealth -= amount;
 
         healthSlider.value = currentHealth;
 
-        playerAudio.Play();
+        int i = Random.Range(0, damageClips.Length);
+        AudioSource.PlayClipAtPoint(damageClips[i], transform.position);
 
         if (currentHealth <= 0 && !isDead) { Comeback(); }
     }
