@@ -23,12 +23,10 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = initialHealth;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// Performe the damage Operations.
+    /// </summary>
+    /// <param name="amount">The amount of damage inflicted to a player.</param>
     public void TakeDamage(int amount)
     {
 
