@@ -14,7 +14,6 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField]
     AudioSource playerAudio;
     private bool isDead = false;
-    private bool damaged = false;
 
     void Awake()
     {
@@ -32,7 +31,6 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        damaged = true;
 
         currentHealth -= amount;
 
