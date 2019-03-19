@@ -13,12 +13,13 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField]
     AudioSource playerAudio;
-    private bool isDead;
-    private bool damaged;
+    private bool isDead = false;
+    private bool damaged = false;
 
     void Awake()
     {
         playerAudio = GetComponent<AudioSource>();
+        healthSlider = GetComponent<Slider>();
 
         currentHealth = initialHealth;
     }
