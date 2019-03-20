@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerEnergy : MonoBehaviour
 {
+    // Não tem regen e chamar o script pra adicionar energia.
+
     [SerializeField]
     private float initialEnergy = 3f;
     [SerializeField]
