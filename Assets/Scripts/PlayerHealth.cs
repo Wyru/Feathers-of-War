@@ -39,6 +39,18 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0 && !isDead) { Comeback(); }
     }
 
+    /// <summary>
+    /// Add an amount of life to a player.
+    /// </summary>
+    /// <param name="amount">Integer with the amount to add.</param>
+    void AddLife(int amount)
+    {
+        if (currentHealth + amount > initialHealth)
+        {   currentHealth = initialHealth;  }
+        else
+        {   currentHealth += amount;    }
+    }
+
     void Comeback()
     {
         // TODO: Comeback Feature
