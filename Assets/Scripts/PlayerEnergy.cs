@@ -4,33 +4,22 @@ using UnityEngine;
 
 public class PlayerEnergy : MonoBehaviour
 {
-    // Não tem regen e chamar o script pra adicionar energia.
-
-    [SerializeField]
-    private float initialEnergy = 3f;
-    [SerializeField]
-    private float regenSpeed = 1f;
-    private float currentEnergy;
-
     // TODO: Work on the HUD and do the operations.
+    [SerializeField]
+    private int initialEnergy = 3;
+    private int currentEnergy;
 
     void Awake()
     {
         currentEnergy = initialEnergy;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        currentEnergy += regenSpeed * Time.deltaTime;
-    }
-
     /// <summary>
     /// Verify if the player has energy to perform a hit.
     /// </summary>
-    /// <param name="energyRequired"></param>
+    /// <param name="energyRequired">Integer based on hit cost</param>
     /// <returns>Returns true, false otherwise.</returns>
-    protected bool CanCast(float energyRequired)
+    protected bool CanCast(int energyRequired)
     {
         if (currentEnergy >= energyRequired)
         {
@@ -39,5 +28,17 @@ public class PlayerEnergy : MonoBehaviour
         }
         else
             return false;
+    }
+
+    /// <summary>
+    /// Adds energy to a players pool.
+    /// </summary>
+    /// <param name="amount">The amount of energy to be add.</param>
+    void addEnergy(int amount)
+    {
+        if(currentEnergy+amount > initialEnergy)
+        {   currentEnergy = initialEnergy; }
+        else
+        {   currentEnergy += amount; }
     }
 }
