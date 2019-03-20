@@ -19,11 +19,10 @@ public class PlayerEnergy : MonoBehaviour
     /// </summary>
     /// <param name="energyRequired">Integer based on hit cost</param>
     /// <returns>Returns true, false otherwise.</returns>
-    protected bool CanCast(int energyRequired)
+    public bool CanCast(int energyRequired)
     {
         if (currentEnergy >= energyRequired)
         {
-            currentEnergy -= energyRequired;
             return true;
         }
         else
@@ -34,11 +33,20 @@ public class PlayerEnergy : MonoBehaviour
     /// Adds energy to a players pool.
     /// </summary>
     /// <param name="amount">The amount of energy to be add.</param>
-    void addEnergy(int amount)
+    public void addEnergy(int amount)
     {
         if(currentEnergy+amount > initialEnergy)
         {   currentEnergy = initialEnergy; }
         else
         {   currentEnergy += amount; }
+    }
+
+    /// <summary>
+    /// Consume energy from a player.
+    /// </summary>
+    /// <param name="energyRequired">The amount of energy to consume.</param>
+    public void consumeEnergy(int energyRequired)
+    {
+        currentEnergy -= energyRequired;
     }
 }

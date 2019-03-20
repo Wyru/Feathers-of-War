@@ -28,7 +28,14 @@ public class PlayerController : MonoBehaviour
     {
         // Treat input
         if (Input.GetButtonDown(chargeAttackButton))
-        { }
+        {
+            // Fazer um enum dos tipos de hit?
+            /*if (PlayerEnergy.CanCast(1))
+             *{
+             *  GameLogic.GetInput(playerNumber, ATTACK);
+             *}
+             */
+        }
         if (Input.GetButtonDown(attackButton))
         { }
         if (Input.GetButtonDown(defenceButton))
