@@ -1,11 +1,25 @@
 fileFormatVersion: 2
 guid: 91e01e0279c3efb42b7799b1ef160256
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: Owl Base Sprites_0
-    21300002: Owl Base Sprites_1
-    21300004: Owl Base Sprites_2
-    21300006: Owl Base Sprites_3
+  internalIDToNameTable:
+  - first:
+      213: 2752379931967651965
+    second: Owl Base Sprites_0
+  - first:
+      213: -4932930215291990878
+    second: Owl Base Sprites_1
+  - first:
+      213: 2487715217372570017
+    second: Owl Base Sprites_2
+  - first:
+      213: -8430076245752523379
+    second: Owl Base Sprites_3
+  - first:
+      213: 7649917442898001307
+    second: Owl Base Sprites_4
+  - first:
+      213: -2650094184864722723
+    second: Owl Base Sprites_5
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -62,7 +76,7 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - serializedVersion: 2
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -73,7 +87,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -84,7 +99,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,7 +111,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 1
+  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -106,6 +123,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 1
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -113,18 +131,19 @@ TextureImporter:
       name: Owl Base Sprites_0
       rect:
         serializedVersion: 2
-        x: 48
-        y: 297
-        width: 228
-        height: 399
+        x: 296
+        y: 412
+        width: 266
+        height: 305
       alignment: 9
-      pivot: {x: 0.49455595, y: 0.95418847}
+      pivot: {x: 0.34134507, y: 0.20698562}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37639ff0615d58743ac96cb629378176
+      spriteID: 87175b0537c3490489fd5b529eab61c6
+      internalID: 2752379931967651965
       vertices: []
       indices: 
       edges: []
@@ -133,18 +152,19 @@ TextureImporter:
       name: Owl Base Sprites_1
       rect:
         serializedVersion: 2
-        x: 347
-        y: 335
-        width: 249
-        height: 341
+        x: 580
+        y: 346
+        width: 212
+        height: 386
       alignment: 9
-      pivot: {x: 0.44018126, y: 0.066839494}
+      pivot: {x: 0.4824351, y: 0.93411285}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36a1d3048c1955845802fc23635934c1
+      spriteID: 557252abd47bfbd48a4070a97b489246
+      internalID: -4932930215291990878
       vertices: []
       indices: 
       edges: []
@@ -153,18 +173,19 @@ TextureImporter:
       name: Owl Base Sprites_2
       rect:
         serializedVersion: 2
-        x: 672
-        y: 389
-        width: 267
-        height: 300
+        x: 800
+        y: 322
+        width: 229
+        height: 401
       alignment: 9
-      pivot: {x: 0.38377902, y: 0.23520182}
+      pivot: {x: 0.54336214, y: 0.9302557}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5eab7a7f252bb154ba94f22d562526e6
+      spriteID: a78cd612c3e08144b9cd145a657366e4
+      internalID: 2487715217372570017
       vertices: []
       indices: 
       edges: []
@@ -173,18 +194,61 @@ TextureImporter:
       name: Owl Base Sprites_3
       rect:
         serializedVersion: 2
-        x: 87
-        y: 26
-        width: 113
-        height: 206
+        x: 304
+        y: 17
+        width: 245
+        height: 340
       alignment: 9
-      pivot: {x: 0.4450777, y: 0.90370464}
+      pivot: {x: 0.47466865, y: 0.09842188}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e939a469daef1324183955473ea5edaa
+      spriteID: aa4f4f4a1bf04d248a3497dcff04717a
+      internalID: -8430076245752523379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Owl Base Sprites_4
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 53
+        width: 114
+        height: 205
+      alignment: 9
+      pivot: {x: 0.44555986, y: 0.89356416}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f25f4a14b28113249bae250c30065af1
+      internalID: 7649917442898001307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Owl Base Sprites_5
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 68
+        width: 85
+        height: 184
+      alignment: 9
+      pivot: {x: 0.44158936, y: 0.8912608}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d0f18c649b4a714d94d5644fc53d1f6
+      internalID: -2650094184864722723
       vertices: []
       indices: 
       edges: []
@@ -192,11 +256,13 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: a8966459292b6c24f82f00f8ff0e740d
+    spriteID: b679c0f2da09d8f409316fce93d4c10b
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
+    secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
