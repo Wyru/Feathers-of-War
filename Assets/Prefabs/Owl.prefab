@@ -69,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1035257229
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: -8430076245752523379, guid: 91e01e0279c3efb42b7799b1ef160256,
     type: 3}
@@ -150,8 +150,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1035257229
+  m_SortingLayer: 1
   m_SortingOrder: 3
   m_Sprite: {fileID: 2487715217372570017, guid: 91e01e0279c3efb42b7799b1ef160256,
     type: 3}
@@ -231,8 +231,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1035257229
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 7649917442898001307, guid: 91e01e0279c3efb42b7799b1ef160256,
     type: 3}
@@ -312,8 +312,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1035257229
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -4932930215291990878, guid: 91e01e0279c3efb42b7799b1ef160256,
     type: 3}
@@ -337,6 +337,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5787341711493010491}
   - component: {fileID: 5787341711493010490}
+  - component: {fileID: 1863760567}
+  - component: {fileID: 1863760568}
+  - component: {fileID: 1863760569}
   m_Layer: 0
   m_Name: Owl
   m_TagString: Untagged
@@ -380,6 +383,48 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1863760567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5787341711493010484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27107413842e70e4cb8d40962b89de04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialHealth: 100
+  healthSlider: {fileID: 0}
+  damageClips: []
+  isDead: 0
+--- !u!114 &1863760568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5787341711493010484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d24ca29f36995a49a199f95418c7c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialEnergy: 3
+--- !u!114 &1863760569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5787341711493010484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7764820d4910e9649906d2ec502595ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNumber: 1
 --- !u!1 &5787341711883975392
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,8 +491,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1035257229
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -2650094184864722723, guid: 91e01e0279c3efb42b7799b1ef160256,
     type: 3}
@@ -527,8 +572,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1035257229
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: 2752379931967651965, guid: 91e01e0279c3efb42b7799b1ef160256,
     type: 3}

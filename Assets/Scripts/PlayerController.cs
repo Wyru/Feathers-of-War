@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
@@ -17,6 +18,8 @@ public class PlayerController : MonoBehaviour
     public event Action OnDefend;
     public event Action OnEvade;
     public event Action OnCharge;
+    
+    private Animator animator;
 
     void Awake()
     {
@@ -24,6 +27,8 @@ public class PlayerController : MonoBehaviour
         attackButton = String.Concat("Attack_P", playerNumber);
         defenceButton = String.Concat("Defense_P", playerNumber);
         evadeButton = String.Concat("Evade_P", playerNumber);
+
+        animator = GetComponent<Animator>();
     }
     // Start is called before the first frame update
     void Start()
@@ -55,24 +60,28 @@ public class PlayerController : MonoBehaviour
         if(OnAttack != null){
             OnAttack.Invoke();
         }
+        animator.SetTrigger("attack");
     }
 
     public void Defend(){
         if(OnDefend != null){
             OnDefend.Invoke();
         }
+        animator.SetTrigger("defend");
     }
 
     public void Evade(){
         if(OnEvade != null){
             OnEvade.Invoke();
         }
+        animator.SetTrigger("evade");
     }
 
     public void Charge(){
         if(OnCharge != null){
-            OnEvade.Invoke();
+            OnCharge.Invoke();
         }
+        animator.SetTrigger("charge");
     }
 
 }

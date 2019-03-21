@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class GameLogic : MonoBehaviour
 {
@@ -22,12 +23,18 @@ public class GameLogic : MonoBehaviour
     private int amountCharge = 1;               // Amount of energy to add to energy pool when use charge.
 
     private float nextRound;
+    private float lastRound;
     private bool started = false;
 
     private string[] inputArray;
 
     public PlayerController p1;
     public PlayerController p2;
+
+    public Image hudTimeDisplay;
+
+
+    public static event Action OnEndTurn;
 
     void Awake()
     {
@@ -42,13 +49,14 @@ public class GameLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nextRound = Time.time;
+        started = true;
+        nextRound = Time.time + turnTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (started && nextRound >= Time.time)
+        if (started && nextRound < Time.time)
         {
             switch (inputArray[1])
             {
@@ -96,14 +104,24 @@ public class GameLogic : MonoBehaviour
                     break;
             }
 
+            Debug.Log($"p1 action:{inputArray[1]}, p2 action:{inputArray[2]}");
+
             inputArray[1] = "";
             inputArray[2] = "";
 
             if (turnTime > minTurnTime)
                 turnTime -= decreaseRate;
 
+            lastRound = nextRound;
             nextRound = Time.time + turnTime;
+
+            if(OnEndTurn != null){
+                OnEndTurn.Invoke();
+            }
         }
+
+        UpdateTimeCounter();
+
     }
 
     /// <summary>
@@ -125,8 +143,15 @@ public class GameLogic : MonoBehaviour
     {
         int index = 0;
         Int32.TryParse(playerNumber, out index);
+        if (inputArray[index] == "") { inputArray[index] = inputName; }
+    }
 
-        if (inputArray[index] != "") { inputArray[index] = inputName; }
+    
+    public void UpdateTimeCounter(){
+
+        hudTimeDisplay.fillAmount = 1 - (Time.time-lastRound)/turnTime;
+
+
     }
 
 }

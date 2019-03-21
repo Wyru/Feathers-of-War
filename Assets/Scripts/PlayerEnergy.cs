@@ -9,9 +9,20 @@ public class PlayerEnergy : MonoBehaviour
     private int initialEnergy = 3;
     private int currentEnergy;
 
+
+    public GameObject[] hudEnergy;
+
     void Awake()
     {
-        currentEnergy = initialEnergy;
+        currentEnergy = 0;
+        GetComponent<PlayerController>().OnCharge += addEnergy;
+        GetComponent<PlayerController>().OnAttack += Attack;
+        GetComponent<PlayerController>().OnEvade += Evade;
+    }
+
+    private void Start()
+    {
+        UpdateHudEnergy();
     }
 
     /// <summary>
@@ -32,21 +43,44 @@ public class PlayerEnergy : MonoBehaviour
     /// <summary>
     /// Adds energy to a players pool.
     /// </summary>
-    /// <param name="amount">The amount of energy to be add.</param>
-    public void addEnergy(int amount)
+    public void addEnergy()
     {
-        if(currentEnergy+amount > initialEnergy)
-        {   currentEnergy = initialEnergy; }
-        else
-        {   currentEnergy += amount; }
+        currentEnergy++;
+        if (currentEnergy > initialEnergy)
+            currentEnergy = initialEnergy;
+        UpdateHudEnergy();
     }
 
     /// <summary>
     /// Consume energy from a player.
     /// </summary>
-    /// <param name="energyRequired">The amount of energy to consume.</param>
-    public void consumeEnergy(int energyRequired)
+    // / <param name="energyRequired">The amount of energy to consume.</param>
+    public void Attack()
     {
-        currentEnergy -= energyRequired;
+        currentEnergy = 0;
+        UpdateHudEnergy();
+    }
+
+    public void Evade()
+    {
+        currentEnergy -=1;
+        UpdateHudEnergy();
+    }
+
+    private void UpdateHudEnergy()
+    {
+        int i = 0;
+        foreach (GameObject energy in hudEnergy)
+        {
+            if (i < currentEnergy)
+            {
+                energy.SetActive(true);
+            }
+            else
+            {
+                energy.SetActive(false);
+            }
+            i++;
+        }
     }
 }
