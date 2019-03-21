@@ -7,7 +7,7 @@ using System;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private string playerNumber = "1";
+    public string playerNumber = "1";
     private string chargeAttackButton;
     private string attackButton;
     private string defenceButton;
