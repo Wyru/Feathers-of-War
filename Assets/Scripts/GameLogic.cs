@@ -5,6 +5,9 @@ using System;
 
 public class GameLogic : MonoBehaviour
 {
+    public static GameLogic Instance;
+
+
     [SerializeField]
     private float turnTime = 2f;
     [SerializeField]
@@ -23,14 +26,19 @@ public class GameLogic : MonoBehaviour
 
     private string[] inputArray;
 
+    public PlayerController p1;
+    public PlayerController p2;
 
     void Awake()
     {
+        Instance = this;
+
         inputArray = new string[3];
 
         inputArray[1] = "";
         inputArray[2] = "";
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,79 +48,52 @@ public class GameLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (started && nextRound >= Time.time )
+        if (started && nextRound >= Time.time)
         {
-            if (inputArray[1] == inputArray[2])
+            switch (inputArray[1])
             {
-                if (inputArray[1] == "Attack")
-                {
-                    // PlayerHealth.TakeDamage(damageAttack);
-                    // PlayerEnergy.consumeEnergy();
-                }
-                else if (inputArray[1] == "Defend")
-                {
-                    // PlayerEnergy.consumeEnergy();
-                }
-                else if (inputArray[1] == "Charge")
-                {
-                    // PlayerEnergy.addEnergy(amountCharge);
-                }
-                else // EVADE
-                {
-                    // PlayerEnergy.consumeEnergy();
-                }
+                case "Attack":
+                    p1.Attack();
+                    break;
+
+                case "Defend":
+                    p1.Defend();
+                    break;
+
+                case "Charge":
+                    p1.Charge();
+                    break;
+
+                case "Evade":
+                    p1.Evade();
+                    break;
+
+                default:
+                    //idle;
+                    break;
             }
-            else
+
+            switch (inputArray[2])
             {
-                if (inputArray[1] == "Attack" && inputArray[2] == "Defend")
-                {
-                    // PlayerEnergy.consumeEnergy();
-                    // PlayerHealth.TakeDamage(damageAttack-damageMitigation);
-                }
-                else if (inputArray[1] == "Attack" && inputArray[2] == "Evade")
-                {
+                case "Attack":
+                    p2.Attack();
+                    break;
 
-                }
-                else if (inputArray[1] == "Attack" && inputArray[2] == "Chage")
-                {
+                case "Defend":
+                    p2.Defend();
+                    break;
 
-                }
-                else if (inputArray[1] == "Evade" && inputArray[2] == "Attack")
-                {
+                case "Charge":
+                    p2.Charge();
+                    break;
 
-                }
-                else if (inputArray[1] == "Evade" && inputArray[2] == "Defend")
-                {
+                case "Evade":
+                    p2.Evade();
+                    break;
 
-                }
-                else if (inputArray[1] == "Evade" && inputArray[2] == "Charge")
-                {
-
-                }
-                else if (inputArray[1] == "Defend" && inputArray[2] == "Attack")
-                {
-
-                }
-                else if (inputArray[1] == "Defend" && inputArray[2] == "Charge")
-                {
-
-                }
-                else if (inputArray[1] == "Defend" && inputArray[2] == "Evade")
-                {
-
-                }
-                else if (inputArray[1] == "Charge" && inputArray[2] == "Attack")
-                {
-
-                }
-                else if (inputArray[1] == "Charge" && inputArray[2] == "Defend")
-                {
-
-                }
-                else if (inputArray[1] == "Charge" && inputArray[2] == "Evade")
-                {
-
-                }
+                default:
+                    //idle;
+                    break;
             }
 
             inputArray[1] = "";
@@ -147,4 +128,5 @@ public class GameLogic : MonoBehaviour
 
         if (inputArray[index] != "") { inputArray[index] = inputName; }
     }
+
 }

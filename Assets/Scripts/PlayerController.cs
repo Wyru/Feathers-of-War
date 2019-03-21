@@ -6,11 +6,17 @@ using System;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private static string playerNumber = "1";
+    private string playerNumber = "1";
     private string chargeAttackButton;
     private string attackButton;
     private string defenceButton;
     private string evadeButton;
+
+
+    public event Action OnAttack;
+    public event Action OnDefend;
+    public event Action OnEvade;
+    public event Action OnCharge;
 
     void Awake()
     {
@@ -29,18 +35,44 @@ public class PlayerController : MonoBehaviour
         // Treat input
         if (Input.GetButtonDown(chargeAttackButton))
         {
-            // Fazer um enum dos tipos de hit?
-            /*if (PlayerEnergy.CanCast(1))
-             *{
-             *  GameLogic.GetInput(playerNumber, ATTACK);
-             *}
-             */
+            GameLogic.Instance.GetInput(playerNumber,"Charge");
         }
         if (Input.GetButtonDown(attackButton))
-        { }
+        { 
+            GameLogic.Instance.GetInput(playerNumber,"Attack");
+        }
         if (Input.GetButtonDown(defenceButton))
-        { }
+        { 
+            GameLogic.Instance.GetInput(playerNumber,"Defend");
+        }
         if (Input.GetButtonDown(evadeButton))
-        { }
+        { 
+            GameLogic.Instance.GetInput(playerNumber,"Evade");
+        }
     }
+
+    public void Attack(){
+        if(OnAttack != null){
+            OnAttack.Invoke();
+        }
+    }
+
+    public void Defend(){
+        if(OnDefend != null){
+            OnDefend.Invoke();
+        }
+    }
+
+    public void Evade(){
+        if(OnEvade != null){
+            OnEvade.Invoke();
+        }
+    }
+
+    public void Charge(){
+        if(OnCharge != null){
+            OnEvade.Invoke();
+        }
+    }
+
 }
