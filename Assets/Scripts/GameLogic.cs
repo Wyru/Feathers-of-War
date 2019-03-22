@@ -11,7 +11,7 @@ public class GameLogic : MonoBehaviour
     [SerializeField]
     private float turnTime = 2f;
     [SerializeField]
-    private float minTurnTime = 0.5f;
+    private float minTurnTime = 1f;
     [SerializeField]
     private float decreaseRate = 0.2f;          // Amount of seconds to subtract from turnTime in the end of turn.
     [SerializeField]
@@ -19,7 +19,7 @@ public class GameLogic : MonoBehaviour
     [SerializeField]
     private int damageAttack = 30;              // Ammount of damage inflicted from a attack hit.
     [SerializeField]
-    private int amountCharge = 1;               // Amount of energy to add to energy pool when use charge.
+    private AudioSource battleSound = null;
 
     private int defenseP1 = 0;
     private int defenseP2 = 0;
@@ -41,7 +41,6 @@ public class GameLogic : MonoBehaviour
 
     public Image hudTimeDisplay;
 
-
     public static event Action OnEndTurn;
 
     void Awake()
@@ -59,6 +58,11 @@ public class GameLogic : MonoBehaviour
     {
         started = true;
         nextRound = Time.time + turnTime;
+
+
+        battleSound.Stop();
+        battleSound.loop = true;
+        battleSound.Play();
     }
 
     // Update is called once per frame
@@ -125,19 +129,20 @@ public class GameLogic : MonoBehaviour
             defenseP1 = 0;
             defenseP2 = 0;
 
-            Debug.Log($"p1 action:{inputArray[1]}, p2 action:{inputArray[2]}");
+            //Debug.Log($"p1 action:{inputArray[1]}, p2 action:{inputArray[2]}");
 
             inputArray[1] = "";
             inputArray[2] = "";
 
-            /*
+            
             if (turnTime > minTurnTime)
                 turnTime -= decreaseRate;
-            */
+            
             lastRound = nextRound;
             nextRound = Time.time + turnTime;
 
-            if(OnEndTurn != null){
+            if (OnEndTurn != null)
+            {
                 OnEndTurn.Invoke();
             }
         }
@@ -168,10 +173,11 @@ public class GameLogic : MonoBehaviour
         if (inputArray[index] == "") { inputArray[index] = inputName; }
     }
 
-    
-    public void UpdateTimeCounter(){
 
-        hudTimeDisplay.fillAmount = 1 - (Time.time-lastRound)/turnTime;
+    public void UpdateTimeCounter()
+    {
+
+        hudTimeDisplay.fillAmount = 1 - (Time.time - lastRound) / turnTime;
 
 
     }
