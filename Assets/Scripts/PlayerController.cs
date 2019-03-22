@@ -21,10 +21,14 @@ public class PlayerController : MonoBehaviour
     public PlayerHealth player1Health;
     public PlayerHealth player2Health;
 
+    public PlayerEnergy playerEnergy;
+
     private Animator animator;
 
     void Awake()
     {
+        playerEnergy = GetComponent<PlayerEnergy>();
+
         chargeAttackButton = String.Concat("ChargeAttack_P", playerNumber);
         attackButton = String.Concat("Attack_P", playerNumber);
         defenceButton = String.Concat("Defense_P", playerNumber);
@@ -46,7 +50,7 @@ public class PlayerController : MonoBehaviour
             {
                 GameLogic.Instance.GetInput(playerNumber, "Charge");
             }
-            if (Input.GetButtonDown(attackButton))
+            if (Input.GetButtonDown(attackButton) && playerEnergy.CanCast(1))
             {
                 GameLogic.Instance.GetInput(playerNumber, "Attack");
             }
@@ -54,7 +58,7 @@ public class PlayerController : MonoBehaviour
             {
                 GameLogic.Instance.GetInput(playerNumber, "Defend");
             }
-            if (Input.GetButtonDown(evadeButton))
+            if (Input.GetButtonDown(evadeButton) && playerEnergy.CanCast(1))
             {
                 GameLogic.Instance.GetInput(playerNumber, "Evade");
             }
