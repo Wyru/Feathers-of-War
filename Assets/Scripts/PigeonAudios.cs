@@ -23,27 +23,27 @@ public class PigeonAudio : MonoBehaviour
 
     public void PlayAttack()
     {
-        int i = Random.RandomRange(0, 2);
+        int i = Random.RandomRange(0, 3);
         source.PlayOneShot(audioCLips[i], 1F);
     }
 
     public void PlayCharge()
     {
-        source.PlayOneShot(audioCLips[2], 1F);
+        source.PlayOneShot(audioCLips[3], 1F);
     }
 
     public void PlayDamage()
     {
-        source.PlayOneShot(audioCLips[3], 1F);
+        source.PlayOneShot(audioCLips[4], 1F);
     }
 
     public void PlayDefense()
     {
-        source.PlayOneShot(audioCLips[4], 1F);
+        source.PlayOneShot(audioCLips[5], 1F);
     }
 
     public void PlayEvade()
     {
-        source.PlayOneShot(audioCLips[5], 1F);
+        source.PlayOneShot(audioCLips[6], 1F);
     }
 }
