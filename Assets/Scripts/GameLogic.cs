@@ -39,6 +39,7 @@ public class GameLogic : MonoBehaviour
 
     public OwlAudios p1Audio;
     public PigeonAudio p2Audio;
+    public FxAudios fx;
 
     public Image hudTimeDisplay;
 
@@ -76,6 +77,7 @@ public class GameLogic : MonoBehaviour
             switch (inputArray[1])
             {
                 case "Attack":
+                    fx.PlayAttack();
                     p1Audio.PlayAttack();
                     p2Audio.PlayDamage();
                     p2Health.TakeDamage(damageAttack - defenseP2);
@@ -83,17 +85,20 @@ public class GameLogic : MonoBehaviour
                     break;
 
                 case "Defend":
+                    fx.PlayDefense();
                     p1Audio.PlayDefense();
                     p1.Defend();
                     break;
 
                 case "Charge":
+                    fx.PlayCharge();
                     p1Audio.PlayCharge();
                     p1.Charge();
                     //p1Energy.addEnergy();
                     break;
 
                 case "Evade":
+                    fx.PlayEvade();
                     p1Audio.PlayEvade();
                     p1.Evade();
                     break;
@@ -106,6 +111,7 @@ public class GameLogic : MonoBehaviour
             switch (inputArray[2])
             {
                 case "Attack":
+                    fx.PlayAttack();
                     p2Audio.PlayAttack();
                     p1Audio.PlayDamage();
                     p1Health.TakeDamage(damageAttack - defenseP1);
@@ -113,17 +119,20 @@ public class GameLogic : MonoBehaviour
                     break;
 
                 case "Defend":
+                    fx.PlayDefense();
                     p2Audio.PlayDefense();
                     p2.Defend();
                     break;
 
                 case "Charge":
+                    fx.PlayCharge();
                     p2Audio.PlayCharge();
                     p2.Charge();
                     //p2Energy.addEnergy(); 
                     break;
 
                 case "Evade":
+                    fx.PlayEvade();
                     p2Audio.PlayEvade();
                     p2.Evade();
                     break;
