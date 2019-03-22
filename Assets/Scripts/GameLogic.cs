@@ -37,12 +37,16 @@ public class GameLogic : MonoBehaviour
     public PlayerEnergy p1Energy;
     public PlayerEnergy p2Energy;
 
+    public OwlAudios p1Audio;
+
     public Image hudTimeDisplay;
 
     public static event Action OnEndTurn;
 
     void Awake()
     {
+        p1Audio = GetComponent<OwlAudios>();
+
         Instance = this;
 
         inputArray = new string[3];
@@ -72,20 +76,24 @@ public class GameLogic : MonoBehaviour
             switch (inputArray[1])
             {
                 case "Attack":
+                    p1Audio.PlayAttack();
                     p2Health.TakeDamage(damageAttack - defenseP2);
                     p1.Attack();
                     break;
 
                 case "Defend":
+                    p1Audio.PlayDefense();
                     p1.Defend();
                     break;
 
                 case "Charge":
+                    p1Audio.PlayCharge();
                     p1.Charge();
                     //p1Energy.addEnergy();
                     break;
 
                 case "Evade":
+                    p1Audio.PlayEvade();
                     p1.Evade();
                     break;
 
