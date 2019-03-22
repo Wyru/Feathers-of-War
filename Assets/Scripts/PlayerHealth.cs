@@ -11,9 +11,7 @@ public class PlayerHealth : MonoBehaviour
     private int initialHealth = 100;
     private int currentHealth;
     [SerializeField]
-    private Slider healthSlider;
-    [SerializeField]
-    private AudioClip[] damageClips;
+    private Slider healthSlider = null;
 
     // End Health Stuff
     private bool isDead = false;
@@ -24,13 +22,13 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField]
     private float comebackTimeCB = 10f;
     [SerializeField]
-    private string buttonName = "";
+    private string buttonName = "Attack";
     [SerializeField]
     private float regenRate = 0.5f;
     [SerializeField]
     private int combebackLimit = 3;
     [SerializeField]
-    private Slider comebackSlider;
+    private Slider comebackSlider = null;
 
     private float actualRegen = 1;
     private PlayerController pController;
@@ -39,7 +37,7 @@ public class PlayerHealth : MonoBehaviour
     private float endTimeCB;
     private string buttonNameP1 = "";
     private string buttonNameP2 = "";
-    private bool started = false;
+    public bool started = false;
     // Ene Comeback Stuff
 
     void Awake()
@@ -56,61 +54,36 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-        if (started)
+        healthSlider.value = currentHealth;
+
+        if (started && !isDead)
         {
-            // P1 always Add P2 always subtract
-            //if (Input.GetButtonDown(buttonNameP1))
-                //Value ++
-            //if (Input.GetButtonDown(buttonNameP2))
-                //Value --
+            if (Input.GetButtonDown(buttonNameP1))
+                comebackSlider.value++;
+            if (Input.GetButtonDown(buttonNameP2))
+                comebackSlider.value--;
         }
 
         // Finish the Comeback
-        if (Time.time >= endTimeCB && started)
+        if (Time.time >= endTimeCB && started && !isDead)
         {
+            if (comebackSlider.value <= 50)
+            {
+                isDead = true;
+                Death();
+            }
+            else
+            {
+                // He survived
+                started = false;
+                comebackCount++;
 
-            if (playerNumber == "1")
-            {
-                /* if (value <= 50)
-                 * {
-                 * Death();
-                 * started = false;
-                 * }
-                 * else
-                 * {
-                 *                 // He survived
-                 * started = false;
-                 * comebackCount++;
-                 *
-                 * actualRegen *= regenRate;
-                 * currentHealth = (int)(initialHealth * actualRegen);
-                 *
-                 * // Enable input from PlayerController
-                 * // Load battlescreen
-                 * }
-                 */
+                actualRegen *= regenRate;
+                currentHealth = (int)(initialHealth * actualRegen);
+
+                // TODO: Go back to battle
             }
-            else // P2
-            {
-                /* if (value >= 50)
-                 * {
-                 * Death();
-                 * started = false;
-                 * }
-                 * else
-                 * {
-                 *                 // He survived
-                 * started = false;
-                 * comebackCount++;
-                 *
-                 * actualRegen *= regenRate;
-                 * currentHealth = (int)(initialHealth * actualRegen);
-                 *
-                 * // Enable input from PlayerController
-                 * // Load battlescreen
-                 * }
-                 */
-            }
+
         }
     }
 
@@ -124,15 +97,13 @@ public class PlayerHealth : MonoBehaviour
 
         healthSlider.value = currentHealth;
 
-        //int i = UnityEngine.Random.Range(0, damageClips.Length);
-        //AudioSource.PlayClipAtPoint(damageClips[i], transform.position);
-
         if (comebackCount == combebackLimit)
         {
+            isDead = true;
             Death();
         }
 
-        if (currentHealth <= 0 && !isDead) { Comeback(); }
+        if (currentHealth <= 0 && !isDead) { StartComeback(); }
     }
 
     /// <summary>
@@ -142,9 +113,9 @@ public class PlayerHealth : MonoBehaviour
     public void AddLife(int amount)
     {
         if (currentHealth + amount > initialHealth)
-        {   currentHealth = initialHealth;  }
+        { currentHealth = initialHealth; }
         else
-        {   currentHealth += amount;    }
+        { currentHealth += amount; }
     }
 
     /// <summary>
@@ -155,21 +126,15 @@ public class PlayerHealth : MonoBehaviour
         startTimeCB = Time.time;
         endTimeCB = startTimeCB + comebackTimeCB;
 
-        // set comebackSlider value to 50
+        comebackSlider.value = 50;
         started = true;
-    }
 
-    void Comeback()
-    {
-        // TODO: Comeback Feature
-        // Disable input from PlayerController
-        // Load te comback screen
-
-        StartComeback();
+        // TODO: Fazer aparecer coisas do comeback
     }
 
     void Death()
     {
+        
         // TODO: Death Feature
         // Load te comback screen for playerNumber
     }

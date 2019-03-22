@@ -63,7 +63,7 @@ public class PlayerEnergy : MonoBehaviour
 
     public void Evade()
     {
-        currentEnergy -=1;
+        currentEnergy -= 1;
         UpdateHudEnergy();
     }
 

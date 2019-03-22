@@ -17,7 +17,10 @@ public class PlayerController : MonoBehaviour
     public event Action OnDefend;
     public event Action OnEvade;
     public event Action OnCharge;
-    
+
+    public PlayerHealth player1Health;
+    public PlayerHealth player2Health;
+
     private Animator animator;
 
     void Awake()
@@ -37,48 +40,58 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Treat input
-        if (Input.GetButtonDown(chargeAttackButton))
+        if (!player1Health.started && !player2Health.started)
         {
-            GameLogic.Instance.GetInput(playerNumber,"Charge");
-        }
-        if (Input.GetButtonDown(attackButton))
-        { 
-            GameLogic.Instance.GetInput(playerNumber,"Attack");
-        }
-        if (Input.GetButtonDown(defenceButton))
-        { 
-            GameLogic.Instance.GetInput(playerNumber,"Defend");
-        }
-        if (Input.GetButtonDown(evadeButton))
-        { 
-            GameLogic.Instance.GetInput(playerNumber,"Evade");
+            if (Input.GetButtonDown(chargeAttackButton))
+            {
+                GameLogic.Instance.GetInput(playerNumber, "Charge");
+            }
+            if (Input.GetButtonDown(attackButton))
+            {
+                GameLogic.Instance.GetInput(playerNumber, "Attack");
+            }
+            if (Input.GetButtonDown(defenceButton))
+            {
+                GameLogic.Instance.GetInput(playerNumber, "Defend");
+            }
+            if (Input.GetButtonDown(evadeButton))
+            {
+                GameLogic.Instance.GetInput(playerNumber, "Evade");
+            }
         }
     }
 
     public void Attack()
     {
-        if(OnAttack != null){
+        if (OnAttack != null)
+        {
             OnAttack.Invoke();
         }
         animator.SetTrigger("attack");
     }
 
-    public void Defend(){
-        if(OnDefend != null){
+    public void Defend()
+    {
+        if (OnDefend != null)
+        {
             OnDefend.Invoke();
         }
         animator.SetTrigger("defend");
     }
 
-    public void Evade(){
-        if(OnEvade != null){
+    public void Evade()
+    {
+        if (OnEvade != null)
+        {
             OnEvade.Invoke();
         }
         animator.SetTrigger("evade");
     }
 
-    public void Charge(){
-        if(OnCharge != null){
+    public void Charge()
+    {
+        if (OnCharge != null)
+        {
             OnCharge.Invoke();
         }
         animator.SetTrigger("charge");
