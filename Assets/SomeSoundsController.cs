@@ -14,6 +14,7 @@ public class SomeSoundsController : MonoBehaviour
     public AudioClip OwlClip;
     public AudioClip PigeonClip;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,17 +28,17 @@ public class SomeSoundsController : MonoBehaviour
    public void Fight(){
        source.Stop();
        source.PlayOneShot(fightClip);
-
+       GameLogic.Instance.StartGame();
+       GameLogic.Instance.EnableTimer();
    }
 
    public void ComeBack(){
+       GameLogic.Instance.DisabelTimer();
        source.PlayOneShot(comebackClip);
-
    }
 
    public void OwlWins(){
        source.PlayOneShot(OwlClip);
-
    }
 
    public void PigeonWins(){

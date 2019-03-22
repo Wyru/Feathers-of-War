@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using UnityEngine.SceneManagement;
+
 public class PlayerHealth : MonoBehaviour
 {
     // Health Stuff
@@ -39,6 +41,13 @@ public class PlayerHealth : MonoBehaviour
     private string buttonNameP2 = "";
     public bool started = false;
     // Ene Comeback Stuff
+
+    //last hours yolo
+    public Animator p1Animator;
+    public Animator p2Animator;
+    public Animator hudAnimator;
+
+    public AudioClip comebackQuote;
 
     void Awake()
     {
@@ -81,7 +90,24 @@ public class PlayerHealth : MonoBehaviour
                 actualRegen *= regenRate;
                 currentHealth = (int)(initialHealth * actualRegen);
 
-                // TODO: Go back to battle
+                GameLogic.Instance.PlaykBG();
+
+                if (playerNumber == "1")
+                {
+                    p1Animator.SetTrigger("comeback");
+                    p2Animator.SetTrigger("enemy_comeback");
+                }
+                else
+                {
+                    p2Animator.SetTrigger("comeback");
+                    p1Animator.SetTrigger("enemy_comeback");
+
+                }
+
+                GetComponent<AudioSource>().PlayOneShot(comebackQuote);
+
+
+                hudAnimator.SetBool("smash", false);
             }
 
         }
@@ -129,13 +155,47 @@ public class PlayerHealth : MonoBehaviour
         comebackSlider.value = 50;
         started = true;
 
-        // TODO: Fazer aparecer coisas do comeback
+        GameLogic.Instance.PlayComebackBG();
+
+        if (playerNumber == "1")
+        {
+            p1Animator.SetTrigger("fall");
+            p2Animator.SetTrigger("prevent_comeback");
+        }
+        else
+        {
+            p2Animator.SetTrigger("fall");
+            p1Animator.SetTrigger("prevent_comeback");
+        }
+        hudAnimator.SetBool("smash", true);
     }
 
     void Death()
     {
-        
+        if (playerNumber == "1")
+        {
+            hudAnimator.SetTrigger("owl_wins");
+            p1Animator.SetTrigger("die");
+            p2Animator.SetTrigger("win");
+            hudAnimator.SetTrigger("owl_wins");
+        }
+        else
+        {
+            hudAnimator.SetTrigger("pigeon_wins");
+            p2Animator.SetTrigger("die");
+            p1Animator.SetTrigger("win");
+            hudAnimator.SetTrigger("pigeon_wins");
+        }
+
+        hudAnimator.SetBool("smash", false);
+
+        Invoke("ReturnMenu",3);
         // TODO: Death Feature
         // Load te comback screen for playerNumber
+    }
+
+
+    public void ReturnMenu(){
+        SceneManager.LoadScene(0);
     }
 }

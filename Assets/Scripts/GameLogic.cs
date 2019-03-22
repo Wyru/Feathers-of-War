@@ -39,11 +39,14 @@ public class GameLogic : MonoBehaviour
 
     public OwlAudios p1Audio;
     public PigeonAudio p2Audio;
-    public FxAudios fx;
 
     public Image hudTimeDisplay;
 
     public static event Action OnEndTurn;
+
+
+    public AudioClip bg;
+    public AudioClip comebackBg;
 
     void Awake()
     {
@@ -59,8 +62,6 @@ public class GameLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        started = true;
-        nextRound = Time.time + turnTime;
     }
 
     // Update is called once per frame
@@ -72,12 +73,17 @@ public class GameLogic : MonoBehaviour
         if (inputArray[2] == "Defend")
             defenseP2 = damageMitigation;
 
+        if (inputArray[1] == "Evade")
+            defenseP1 = damageAttack;
+
+        if (inputArray[2] == "Evade")
+            defenseP2 = damageAttack;
+
         if (started && nextRound < Time.time)
         {
             switch (inputArray[1])
             {
                 case "Attack":
-                    fx.PlayAttack();
                     p1Audio.PlayAttack();
                     p2Audio.PlayDamage();
                     p2Health.TakeDamage(damageAttack - defenseP2);
@@ -85,20 +91,18 @@ public class GameLogic : MonoBehaviour
                     break;
 
                 case "Defend":
-                    fx.PlayDefense();
+
                     p1Audio.PlayDefense();
                     p1.Defend();
                     break;
 
                 case "Charge":
-                    fx.PlayCharge();
                     p1Audio.PlayCharge();
                     p1.Charge();
                     //p1Energy.addEnergy();
                     break;
 
                 case "Evade":
-                    fx.PlayEvade();
                     p1Audio.PlayEvade();
                     p1.Evade();
                     break;
@@ -111,7 +115,6 @@ public class GameLogic : MonoBehaviour
             switch (inputArray[2])
             {
                 case "Attack":
-                    fx.PlayAttack();
                     p2Audio.PlayAttack();
                     p1Audio.PlayDamage();
                     p1Health.TakeDamage(damageAttack - defenseP1);
@@ -119,20 +122,17 @@ public class GameLogic : MonoBehaviour
                     break;
 
                 case "Defend":
-                    fx.PlayDefense();
                     p2Audio.PlayDefense();
                     p2.Defend();
                     break;
 
                 case "Charge":
-                    fx.PlayCharge();
                     p2Audio.PlayCharge();
                     p2.Charge();
                     //p2Energy.addEnergy(); 
                     break;
 
                 case "Evade":
-                    fx.PlayEvade();
                     p2Audio.PlayEvade();
                     p2.Evade();
                     break;
@@ -150,10 +150,10 @@ public class GameLogic : MonoBehaviour
             inputArray[1] = "";
             inputArray[2] = "";
 
-            
+
             if (turnTime > minTurnTime)
                 turnTime -= decreaseRate;
-            
+
             lastRound = nextRound;
             nextRound = Time.time + turnTime;
 
@@ -161,16 +161,18 @@ public class GameLogic : MonoBehaviour
             {
                 OnEndTurn.Invoke();
             }
-        }
 
-        UpdateTimeCounter();
+        }
+        if(started)
+            UpdateTimeCounter();
+
 
     }
 
     /// <summary>
     /// Sets timeCount to start properly.
     /// </summary>
-    public void StartGame() { nextRound = Time.time; started = true; }
+    public void StartGame() { nextRound = Time.time + turnTime; started = true; }
 
     /// <summary>
     /// Pauses the turn process.
@@ -194,8 +196,29 @@ public class GameLogic : MonoBehaviour
     {
 
         hudTimeDisplay.fillAmount = 1 - (Time.time - lastRound) / turnTime;
+    }
+
+    public void DisabelTimer()
+    {
+        hudTimeDisplay.gameObject.SetActive(false);
+    }
+
+    public void EnableTimer()
+    {
+        hudTimeDisplay.gameObject.SetActive(true);
+    }
 
 
+    public void PlayComebackBG(){
+        GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().clip = comebackBg;
+        GetComponent<AudioSource>().Play();
+    }
+
+    public void PlaykBG(){
+        GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().clip = comebackBg;
+        GetComponent<AudioSource>().Play();
     }
 
 }
