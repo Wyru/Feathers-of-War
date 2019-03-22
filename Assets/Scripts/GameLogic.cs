@@ -8,7 +8,6 @@ public class GameLogic : MonoBehaviour
 {
     public static GameLogic Instance;
 
-
     [SerializeField]
     private float turnTime = 2f;
     [SerializeField]
@@ -22,6 +21,9 @@ public class GameLogic : MonoBehaviour
     [SerializeField]
     private int amountCharge = 1;               // Amount of energy to add to energy pool when use charge.
 
+    private int defenseP1 = 0;
+    private int defenseP2 = 0;
+
     private float nextRound;
     private float lastRound;
     private bool started = false;
@@ -30,6 +32,12 @@ public class GameLogic : MonoBehaviour
 
     public PlayerController p1;
     public PlayerController p2;
+
+    public PlayerHealth p1Health;
+    public PlayerHealth p2Health;
+
+    public PlayerEnergy p1Energy;
+    public PlayerEnergy p2Energy;
 
     public Image hudTimeDisplay;
 
@@ -56,11 +64,18 @@ public class GameLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (inputArray[1] == "Defend")
+            defenseP1 = damageMitigation;
+
+        if (inputArray[2] == "Defend")
+            defenseP2 = damageMitigation;
+
         if (started && nextRound < Time.time)
         {
             switch (inputArray[1])
             {
                 case "Attack":
+                    p2Health.TakeDamage(damageAttack - defenseP2);
                     p1.Attack();
                     break;
 
@@ -70,6 +85,7 @@ public class GameLogic : MonoBehaviour
 
                 case "Charge":
                     p1.Charge();
+                    //p1Energy.addEnergy();
                     break;
 
                 case "Evade":
@@ -84,6 +100,7 @@ public class GameLogic : MonoBehaviour
             switch (inputArray[2])
             {
                 case "Attack":
+                    p1Health.TakeDamage(damageAttack - defenseP1);
                     p2.Attack();
                     break;
 
@@ -93,6 +110,7 @@ public class GameLogic : MonoBehaviour
 
                 case "Charge":
                     p2.Charge();
+                    //p2Energy.addEnergy(); 
                     break;
 
                 case "Evade":
@@ -104,14 +122,18 @@ public class GameLogic : MonoBehaviour
                     break;
             }
 
+            defenseP1 = 0;
+            defenseP2 = 0;
+
             Debug.Log($"p1 action:{inputArray[1]}, p2 action:{inputArray[2]}");
 
             inputArray[1] = "";
             inputArray[2] = "";
 
+            /*
             if (turnTime > minTurnTime)
                 turnTime -= decreaseRate;
-
+            */
             lastRound = nextRound;
             nextRound = Time.time + turnTime;
 
