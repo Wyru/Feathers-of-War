@@ -1380,6 +1380,30 @@ RectTransform:
   m_AnchoredPosition: {x: 0.27999878, y: 0}
   m_SizeDelta: {x: -9.45, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &906059666 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1863760568, guid: 750d2da7a936ef346a736c53b6a52472,
+    type: 3}
+  m_PrefabInstance: {fileID: 5787341711895632211}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d24ca29f36995a49a199f95418c7c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &906059667 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1863760567, guid: 750d2da7a936ef346a736c53b6a52472,
+    type: 3}
+  m_PrefabInstance: {fileID: 5787341711895632211}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27107413842e70e4cb8d40962b89de04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &956175904
 GameObject:
   m_ObjectHideFlags: 0
@@ -2015,7 +2039,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1403952360}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.01, y: 0.29, z: 0}
+  m_LocalPosition: {x: 0.01, y: -13.74, z: 0}
   m_LocalScale: {x: 1.874125, y: 1.874125, z: 1.874125}
   m_Children:
   - {fileID: 412309026}
@@ -2556,6 +2580,10 @@ MonoBehaviour:
   amountCharge: 1
   p1: {fileID: 1863760569}
   p2: {fileID: 1522865404}
+  p1Health: {fileID: 906059667}
+  p2Health: {fileID: 1522865402}
+  p1Energy: {fileID: 906059666}
+  p2Energy: {fileID: 1522865403}
   hudTimeDisplay: {fileID: 467811045}
 --- !u!4 &1737393451
 Transform:
@@ -3429,6 +3457,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Owl
       objectReference: {fileID: 0}
+    - target: {fileID: 1863760568, guid: 750d2da7a936ef346a736c53b6a52472, type: 3}
+      propertyPath: hudEnergy.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863760568, guid: 750d2da7a936ef346a736c53b6a52472, type: 3}
+      propertyPath: hudEnergy.Array.data[3]
+      value: 
+      objectReference: {fileID: 1370828572}
+    - target: {fileID: 1863760568, guid: 750d2da7a936ef346a736c53b6a52472, type: 3}
+      propertyPath: hudEnergy.Array.data[4]
+      value: 
+      objectReference: {fileID: 2121508939}
+    - target: {fileID: 1863760568, guid: 750d2da7a936ef346a736c53b6a52472, type: 3}
+      propertyPath: hudEnergy.Array.data[5]
+      value: 
+      objectReference: {fileID: 292314437}
+    - target: {fileID: 1863760568, guid: 750d2da7a936ef346a736c53b6a52472, type: 3}
+      propertyPath: hudEnergy.Array.data[0]
+      value: 
+      objectReference: {fileID: 578326511}
+    - target: {fileID: 1863760568, guid: 750d2da7a936ef346a736c53b6a52472, type: 3}
+      propertyPath: hudEnergy.Array.data[1]
+      value: 
+      objectReference: {fileID: 642433375}
+    - target: {fileID: 1863760568, guid: 750d2da7a936ef346a736c53b6a52472, type: 3}
+      propertyPath: hudEnergy.Array.data[2]
+      value: 
+      objectReference: {fileID: 1828763418}
     - target: {fileID: 5787341711493010491, guid: 750d2da7a936ef346a736c53b6a52472,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3488,33 +3544,5 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 956175906}
-    - target: {fileID: 1863760568, guid: 750d2da7a936ef346a736c53b6a52472, type: 3}
-      propertyPath: hudEnergy.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1863760568, guid: 750d2da7a936ef346a736c53b6a52472, type: 3}
-      propertyPath: hudEnergy.Array.data[3]
-      value: 
-      objectReference: {fileID: 1370828572}
-    - target: {fileID: 1863760568, guid: 750d2da7a936ef346a736c53b6a52472, type: 3}
-      propertyPath: hudEnergy.Array.data[4]
-      value: 
-      objectReference: {fileID: 2121508939}
-    - target: {fileID: 1863760568, guid: 750d2da7a936ef346a736c53b6a52472, type: 3}
-      propertyPath: hudEnergy.Array.data[5]
-      value: 
-      objectReference: {fileID: 292314437}
-    - target: {fileID: 1863760568, guid: 750d2da7a936ef346a736c53b6a52472, type: 3}
-      propertyPath: hudEnergy.Array.data[0]
-      value: 
-      objectReference: {fileID: 578326511}
-    - target: {fileID: 1863760568, guid: 750d2da7a936ef346a736c53b6a52472, type: 3}
-      propertyPath: hudEnergy.Array.data[1]
-      value: 
-      objectReference: {fileID: 642433375}
-    - target: {fileID: 1863760568, guid: 750d2da7a936ef346a736c53b6a52472, type: 3}
-      propertyPath: hudEnergy.Array.data[2]
-      value: 
-      objectReference: {fileID: 1828763418}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 750d2da7a936ef346a736c53b6a52472, type: 3}

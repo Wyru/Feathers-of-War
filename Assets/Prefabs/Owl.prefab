@@ -398,7 +398,12 @@ MonoBehaviour:
   initialHealth: 100
   healthSlider: {fileID: 0}
   damageClips: []
-  isDead: 0
+  startTimeCB: 0
+  comebackTimeCB: 10
+  buttonName: 
+  regenRate: 0.5
+  combebackLimit: 3
+  comebackSlider: {fileID: 0}
 --- !u!114 &1863760568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,6 +417,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialEnergy: 3
+  hudEnergy:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &1863760569
 MonoBehaviour:
   m_ObjectHideFlags: 0
