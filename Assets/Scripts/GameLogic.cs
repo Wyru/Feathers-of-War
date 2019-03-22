@@ -18,8 +18,6 @@ public class GameLogic : MonoBehaviour
     private int damageMitigation = 20;          // Amount of damage mitigate from a attack when you use defense.
     [SerializeField]
     private int damageAttack = 30;              // Ammount of damage inflicted from a attack hit.
-    [SerializeField]
-    private AudioSource battleSound = null;
 
     private int defenseP1 = 0;
     private int defenseP2 = 0;
@@ -58,11 +56,6 @@ public class GameLogic : MonoBehaviour
     {
         started = true;
         nextRound = Time.time + turnTime;
-
-
-        battleSound.Stop();
-        battleSound.loop = true;
-        battleSound.Play();
     }
 
     // Update is called once per frame
