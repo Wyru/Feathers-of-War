@@ -47,6 +47,7 @@ public class GameLogic : MonoBehaviour
     void Awake()
     {
         p1Audio = GetComponent<OwlAudios>();
+        p2Audio = GetComponent<PigeonAudio>();
 
         Instance = this;
 
