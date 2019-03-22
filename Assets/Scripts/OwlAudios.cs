@@ -23,7 +23,7 @@ public class OwlAudios : MonoBehaviour
 
     public void PlayAttack()
     {
-        int i = Random.RandomRange(0, 2);
+        int i = Random.Range(0, 2);
         source.PlayOneShot(audioCLips[i], 1F);
     }
 
