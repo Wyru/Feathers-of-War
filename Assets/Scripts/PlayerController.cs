@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     private string defenceButton;
     private string evadeButton;
 
-
     public event Action OnAttack;
     public event Action OnDefend;
     public event Action OnEvade;
@@ -56,7 +55,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Attack(){
+    public void Attack()
+    {
         if(OnAttack != null){
             OnAttack.Invoke();
         }

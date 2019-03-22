@@ -13,7 +13,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField]
     private Slider healthSlider;
     [SerializeField]
-    private AudioClip[] damageClips = null;
+    private AudioClip[] damageClips;
 
     // End Health Stuff
     private bool isDead = false;
@@ -124,8 +124,8 @@ public class PlayerHealth : MonoBehaviour
 
         healthSlider.value = currentHealth;
 
-        int i = UnityEngine.Random.Range(0, damageClips.Length);
-        AudioSource.PlayClipAtPoint(damageClips[i], transform.position);
+        //int i = UnityEngine.Random.Range(0, damageClips.Length);
+        //AudioSource.PlayClipAtPoint(damageClips[i], transform.position);
 
         if (comebackCount == combebackLimit)
         {
