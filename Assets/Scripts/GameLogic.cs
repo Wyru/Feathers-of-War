@@ -145,7 +145,6 @@ public class GameLogic : MonoBehaviour
             defenseP1 = 0;
             defenseP2 = 0;
 
-            //Debug.Log($"p1 action:{inputArray[1]}, p2 action:{inputArray[2]}");
 
             inputArray[1] = "";
             inputArray[2] = "";
@@ -163,7 +162,7 @@ public class GameLogic : MonoBehaviour
             }
 
         }
-        if(started)
+        if (started)
             UpdateTimeCounter();
 
 
@@ -209,13 +208,15 @@ public class GameLogic : MonoBehaviour
     }
 
 
-    public void PlayComebackBG(){
+    public void PlayComebackBG()
+    {
         GetComponent<AudioSource>().Stop();
         GetComponent<AudioSource>().clip = comebackBg;
         GetComponent<AudioSource>().Play();
     }
 
-    public void PlaykBG(){
+    public void PlaykBG()
+    {
         GetComponent<AudioSource>().Stop();
         GetComponent<AudioSource>().clip = comebackBg;
         GetComponent<AudioSource>().Play();

@@ -76,7 +76,16 @@ public class PlayerHealth : MonoBehaviour
         // Finish the Comeback
         if (Time.time >= endTimeCB && started && !isDead)
         {
-            if (comebackSlider.value <= 50)
+            bool comeback = false;
+
+            if(playerNumber=="1"){
+                comeback = comebackSlider.value >= 50;
+            }
+            else{
+                comeback = comebackSlider.value <= 50;
+            }
+
+            if (comeback)
             {
                 isDead = true;
                 Death();
@@ -174,17 +183,15 @@ public class PlayerHealth : MonoBehaviour
     {
         if (playerNumber == "1")
         {
-            hudAnimator.SetTrigger("owl_wins");
             p1Animator.SetTrigger("die");
             p2Animator.SetTrigger("win");
-            hudAnimator.SetTrigger("owl_wins");
+            hudAnimator.SetTrigger("pigeon_wins");
         }
         else
         {
-            hudAnimator.SetTrigger("pigeon_wins");
             p2Animator.SetTrigger("die");
             p1Animator.SetTrigger("win");
-            hudAnimator.SetTrigger("pigeon_wins");
+            hudAnimator.SetTrigger("owl_wins");
         }
 
         hudAnimator.SetBool("smash", false);
